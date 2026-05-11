@@ -1,9 +1,4 @@
 <?php
-/* ============================================================
-   📁 ARQUIVO: index.php
-   📌 FUNÇÃO : Página inicial — lista todos os jogadores
-   🔗 DEPENDE : conecta.php | header.php | footer.php
-   ============================================================ */
 
 require 'conecta.php';
 require 'header.php';
