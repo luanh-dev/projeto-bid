@@ -1,7 +1,7 @@
 <?php
 
 $host   = 'localhost';
-$dbname = 'seu_banco';       // ← Altere para o nome do seu banco
+$dbname = 'Projeto_bid';       // ← Altere para o nome do seu banco
 $user   = 'root';            // ← Altere para seu usuário
 $pass   = '';                // ← Altere para sua senha
 $charset = 'utf8mb4';

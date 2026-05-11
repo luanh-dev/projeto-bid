@@ -1,4 +1,5 @@
 <?php
+?>
 
 <footer style="
     text-align: center;
@@ -9,7 +10,9 @@
     border-top: 1px solid #dde3ea;
     background: #fff;
 ">
-    Projeto de Extensão em Programação - BID &mdash; <?= date('Y') ?>
+
+    Projeto de Extensão em Programação - BID &ndash; <?= date("Y") ?>
+
 </footer>
 
 </body>
