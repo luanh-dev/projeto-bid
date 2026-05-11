@@ -1,5 +1,16 @@
-</div> <footer style="text-align: center; padding: 20px; color: #666;">
-    <p>&copy; <?= date('Y') ?> - Projeto de Extensão em Programação - Boletim Informativo Diário</p>
+<?php
+
+<footer style="
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: .82rem;
+    color: #888;
+    border-top: 1px solid #dde3ea;
+    background: #fff;
+">
+    Projeto de Extensão em Programação - BID &mdash; <?= date('Y') ?>
 </footer>
+
 </body>
 </html>
