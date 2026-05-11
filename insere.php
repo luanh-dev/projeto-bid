@@ -1,10 +1,4 @@
 <?php
-/* ============================================================
-   📁 ARQUIVO: insere.php
-   📌 FUNÇÃO : Exibe o formulário de cadastro de novo jogador
-   🔗 DEPENDE : conecta.php | header.php | footer.php
-   📤 ENVIA PARA: recebe.php (método POST)
-   ============================================================ */
 
 require 'conecta.php';
 require 'header.php';
