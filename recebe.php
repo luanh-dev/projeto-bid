@@ -1,6 +1,9 @@
 <?php
-
+require_once 'auth.php';
 require 'conecta.php';
+
+// Bloqueia acesso se não for administrador
+checkAdmin();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: index.php');
@@ -52,6 +55,7 @@ try {
             ':cadastrado_por'=> $cadastrado_por,
         ]);
         header('Location: index.php?msg=inserido');
+        exit;
 
     } elseif ($acao === 'alterar') {
         
@@ -92,15 +96,15 @@ try {
             ':id'            => $id,
         ]);
         header('Location: index.php?msg=alterado');
+        exit;
 
     } else {
         header('Location: index.php?msg=erro');
+        exit;
     }
 
 } catch (PDOException $e) {
-    
     error_log($e->getMessage());
     header('Location: index.php?msg=erro');
+    exit;
 }
-
-exit;

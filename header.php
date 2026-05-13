@@ -1,5 +1,5 @@
 <?php
-
+require_once 'auth.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -22,9 +22,11 @@
             padding: 0 24px;
             display: flex;
             align-items: center;
+            justify-content: flex-start;
             gap: 8px;
             flex-wrap: wrap;
             box-shadow: 0 2px 6px rgba(0,0,0,.25);
+            min-height: 50px;
         }
 
         nav .brand {
@@ -187,8 +189,14 @@
 <nav>
     <span class="brand">⚽ GestãoJogadores</span>
     <a href="index.php">Início</a>
-    <a href="insere.php">Novo Jogador</a>
+    <?php if (isAdmin()): ?>
+        <a href="insere.php">Novo Jogador</a>
+    <?php endif; ?>
     <a href="relatorio.php">Relatório</a>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 15px; padding: 10px 0;">
+        <span style="color: #fff; font-size: 0.9rem;">Olá, <strong><?= htmlspecialchars($_SESSION['usuario_nome'] ?? 'Usuário') ?></strong></span>
+        <a href="logout.php" class="btn btn-danger" style="padding: 5px 15px; font-size: 0.85rem;">Sair</a>
+    </div>
 </nav>
 
 <main>

@@ -10,6 +10,7 @@ if (!empty($_GET['msg'])) {
         'alterado'  => ['type' => 'success', 'text' => '✅ Jogador atualizado com sucesso!'],
         'excluido'  => ['type' => 'success', 'text' => '✅ Jogador excluído com sucesso!'],
         'erro'      => ['type' => 'danger',  'text' => '❌ Ocorreu um erro na operação.'],
+    'permissao_negada' => ['type' => 'danger', 'text' => '🚫 Acesso negado: apenas administradores podem realizar esta ação.'],
     ];
     $m = $msgs[$_GET['msg']] ?? null;
     if ($m) {
@@ -51,7 +52,9 @@ $jogadores = $stmt->fetchAll();
             <a href="index.php" class="btn btn-info">✖ Limpar</a>
         <?php endif; ?>
     </form>
-    <a href="insere.php" class="btn btn-success">➕ Novo Jogador</a>
+    <?php if (isAdmin()): ?>
+        <a href="insere.php" class="btn btn-success">➕ Novo Jogador</a>
+    <?php endif; ?>
 </div>
 
 <!-- Tabela de jogadores -->
@@ -91,12 +94,16 @@ $jogadores = $stmt->fetchAll();
             <td><?= $j['idade'] ?> anos</td>
             <td><?= htmlspecialchars($j['pe_dominante']) ?></td>
             <td><span class="badge <?= $badgeClass ?>"><?= $j['status'] ?></span></td>
+            <?php if (isAdmin()): ?>
             <td style="white-space:nowrap;">
                 <a href="altera.php?id=<?= $j['id_jogadores'] ?>" class="btn btn-warning btn-sm">✏ Editar</a>
                 <a href="exclui.php?id=<?= $j['id_jogadores'] ?>"
                    class="btn btn-danger btn-sm"
                    onclick="return confirm('Confirma a exclusão de <?= htmlspecialchars($j['nome']) ?>?')">🗑 Excluir</a>
             </td>
+            <?php else: ?>
+            <td>—</td>
+            <?php endif; ?>
         </tr>
     <?php endforeach; ?>
     </tbody>
