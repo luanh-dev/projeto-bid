@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->fetch()) {
                 $erro = 'Este e-mail já está cadastrado.';
             } else {
-                $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-                $stmt = $pdo->prepare("INSERT INTO USUARIOS (nome, email, senha) VALUES (?, ?, ?)");
+                $stmt = $pdo->prepare("INSERT INTO USUARIOS (nome, email, senha, nivel) VALUES (?, ?, ?, 'usuario')");
+                $stmt->execute([$nome, $email, $senha_hash]);
                 try {
                     $stmt->execute([$nome, $email, $senha_hash]);
                     header("Location: login.php?msg=cadastrado");
