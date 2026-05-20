@@ -3,14 +3,13 @@
 require 'conecta.php';
 require 'header.php';
 
-/* ── Mensagem de retorno de operações ── */
 if (!empty($_GET['msg'])) {
     $msgs = [
-        'inserido'  => ['type' => 'success', 'text' => '✅ Jogador cadastrado com sucesso!'],
-        'alterado'  => ['type' => 'success', 'text' => '✅ Jogador atualizado com sucesso!'],
-        'excluido'  => ['type' => 'success', 'text' => '✅ Jogador excluído com sucesso!'],
-        'erro'      => ['type' => 'danger',  'text' => '❌ Ocorreu um erro na operação.'],
-    'permissao_negada' => ['type' => 'danger', 'text' => '🚫 Acesso negado: apenas administradores podem realizar esta ação.'],
+        'inserido'  => ['type' => 'success', 'text' => 'Jogador cadastrado com sucesso!'],
+        'alterado'  => ['type' => 'success', 'text' => 'Jogador atualizado com sucesso!'],
+        'excluido'  => ['type' => 'success', 'text' => 'Jogador excluído com sucesso!'],
+        'erro'      => ['type' => 'danger',  'text' => 'Ocorreu um erro na operação.'],
+    'permissao_negada' => ['type' => 'danger', 'text' => 'Acesso negado: apenas administradores podem realizar esta ação.'],
     ];
     $m = $msgs[$_GET['msg']] ?? null;
     if ($m) {
@@ -39,9 +38,8 @@ $stmt->execute($params);
 $jogadores = $stmt->fetchAll();
 ?>
 
-<h1>⚽ Jogadores Cadastrados</h1>
+<h1>Jogadores Cadastrados</h1>
 
-<!-- Barra de busca + botão novo -->
 <div style="display:flex; gap:10px; margin-bottom:18px; align-items:center; flex-wrap:wrap;">
     <form method="GET" style="display:flex; gap:8px; flex:1; min-width:240px;">
         <input type="text" name="busca" placeholder="Buscar por nome, clube ou posição..."
@@ -57,7 +55,6 @@ $jogadores = $stmt->fetchAll();
     <?php endif; ?>
 </div>
 
-<!-- Tabela de jogadores -->
 <?php if (count($jogadores) === 0): ?>
     <div class="alert alert-info">Nenhum jogador encontrado.</div>
 <?php else: ?>
