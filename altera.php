@@ -11,21 +11,18 @@ if (!$id) {
     exit;
 }
 
-/* ── Busca os dados do jogador ── */
 $stmt = $pdo->prepare("SELECT * FROM jogadores WHERE id_jogadores = :id");
 $stmt->execute([':id' => $id]);
 $j = $stmt->fetch();
 
 if (!$j) {
-    echo '<div class="alert alert-danger">❌ Jogador não encontrado.</div>';
+    echo '<div class="alert alert-danger">Atleta não encontrado.</div>';
     require 'footer.php';
     exit;
 }
 
-/* ── Busca usuários ── */
 $usuarios = $pdo->query("SELECT id_usuarios, nome FROM USUARIOS ORDER BY nome")->fetchAll();
 
-/* ── Função auxiliar para marcar selected/selected ── */
 function sel($val, $current): string {
     return $val === $current ? 'selected' : '';
 }
