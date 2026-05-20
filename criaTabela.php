@@ -4,7 +4,6 @@ require 'conecta.php';
 
 $sqls = [];
 
-/* --- Tabela USUARIOS --- */
 $sqls[] = "CREATE TABLE IF NOT EXISTS USUARIOS (
     id_usuarios      INT AUTO_INCREMENT PRIMARY KEY,
     nome             VARCHAR(100)  NOT NULL,
@@ -14,11 +13,9 @@ $sqls[] = "CREATE TABLE IF NOT EXISTS USUARIOS (
     ultima_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
-/* --- Usuário admin padrão --- */
 $sqls[] = "INSERT IGNORE INTO USUARIOS (nome, email, senha)
     VALUES ('Administrador', 'root@admin.com', '12345')";
 
-/* --- Tabela jogadores --- */
 $sqls[] = "CREATE TABLE IF NOT EXISTS jogadores (
     id_jogadores  INT AUTO_INCREMENT PRIMARY KEY,
     nome          VARCHAR(120) NOT NULL,
@@ -41,7 +38,6 @@ $sqls[] = "CREATE TABLE IF NOT EXISTS jogadores (
         REFERENCES USUARIOS(id_usuarios) ON DELETE SET NULL
 )";
 
-/* --- Jogador de exemplo --- */
 $sqls[] = "INSERT IGNORE INTO jogadores
     (nome, posicao, categoria, idade, clube, nacionalidade,
      pe_dominante, altura_cm, peso_kg, status, cadastrado_por, obs)
@@ -50,13 +46,12 @@ $sqls[] = "INSERT IGNORE INTO jogadores
      'Esporte Clube Vitória','Brasileiro','Direito',178,74,'Ativo',1,
      'Jogador veloz com bom drible.')";
 
-/* --- Executa todos os SQL --- */
 foreach ($sqls as $sql) {
     try {
         $pdo->exec($sql);
-        echo '<p style="color:green;font-family:sans-serif;">✅ Executado com sucesso.</p>';
+        echo '<p style="color:green;font-family:sans-serif;">Executado com sucesso.</p>';
     } catch (PDOException $e) {
-        echo '<p style="color:red;font-family:sans-serif;">❌ Erro: ' . $e->getMessage() . '</p>';
+        echo '<p style="color:red;font-family:sans-serif;">Erro: ' . $e->getMessage() . '</p>';
     }
 }
 
