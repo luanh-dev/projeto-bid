@@ -1,8 +1,6 @@
 <?php
 require_once 'auth.php';
 require 'conecta.php';
-
-// Bloqueia acesso se não for administrador
 checkAdmin();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
