@@ -18,6 +18,6 @@ try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
     die('<p style="color:red;font-family:sans-serif;">
-        ❌ Erro de conexão: ' . $e->getMessage() . '
+        Erro de conexão: ' . $e->getMessage() . '
     </p>');
 }
