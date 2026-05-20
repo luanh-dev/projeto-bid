@@ -1,9 +1,9 @@
 <?php
 
 $host   = 'localhost';
-$dbname = 'Projeto_bid';       // ← Altere para o nome do seu banco
-$user   = 'root';            // ← Altere para seu usuário
-$pass   = '';                // ← Altere para sua senha
+$dbname = 'Projeto_bid';
+$user   = 'root';
+$pass   = '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
