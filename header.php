@@ -16,7 +16,6 @@ require_once 'auth.php';
             color: #222;
         }
 
-        /* ── Barra de navegação ── */
         nav {
             background: #1a3a5c;
             padding: 0 24px;
@@ -52,14 +51,12 @@ require_once 'auth.php';
             color: #fff;
         }
 
-        /* ── Container principal ── */
         main {
             max-width: 1100px;
             margin: 28px auto;
             padding: 0 16px;
         }
 
-        /* ── Títulos de página ── */
         h1 {
             font-size: 1.5rem;
             margin-bottom: 20px;
@@ -68,7 +65,6 @@ require_once 'auth.php';
             padding-left: 12px;
         }
 
-        /* ── Tabela ── */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -98,7 +94,6 @@ require_once 'auth.php';
         tr:last-child td { border-bottom: none; }
         tr:hover td { background: #f5f9ff; }
 
-        /* ── Botões ── */
         .btn {
             display: inline-block;
             padding: 7px 16px;
@@ -118,7 +113,6 @@ require_once 'auth.php';
         .btn-info     { background: #2471a3; color: #fff; }
         .btn-sm       { padding: 4px 10px; font-size: .82rem; }
 
-        /* ── Formulários ── */
         .form-card {
             background: #fff;
             border-radius: 8px;
@@ -158,7 +152,6 @@ require_once 'auth.php';
             gap: 16px;
         }
 
-        /* ── Alertas ── */
         .alert {
             padding: 11px 16px;
             border-radius: 5px;
@@ -170,7 +163,6 @@ require_once 'auth.php';
         .alert-danger  { background: #fadbd8; color: #922b21; border-left: 4px solid #c0392b; }
         .alert-info    { background: #d6eaf8; color: #1a5276; border-left: 4px solid #2471a3; }
 
-        /* ── Badge de status ── */
         .badge {
             display: inline-block;
             padding: 3px 9px;
@@ -187,7 +179,7 @@ require_once 'auth.php';
 <body>
 
 <nav>
-    <span class="brand">⚽ GestãoJogadores</span>
+    <span class="brand">GestãoJogadores</span>
     <a href="index.php">Início</a>
     <?php if (isAdmin()): ?>
         <a href="insere.php">Novo Jogador</a>
