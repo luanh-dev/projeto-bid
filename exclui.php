@@ -16,7 +16,6 @@ try {
     if ($stmt->rowCount() > 0) {
         header('Location: index.php?msg=excluido');
     } else {
-        /* Nenhuma linha afetada — ID inexistente */
         header('Location: index.php?msg=erro');
     }
 
