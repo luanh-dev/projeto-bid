@@ -2,7 +2,6 @@
 require 'conecta.php';
 require 'header.php';
 
-/* ── Filtros via GET ── */
 $filtroNome      = trim($_GET['nome'] ?? '');
 $filtroClube     = trim($_GET['clube'] ?? '');
 $filtroStatus    = $_GET['status']    ?? '';
@@ -61,7 +60,6 @@ $stmt = $pdo->prepare("
 $stmt->execute($params);
 $jogadores = $stmt->fetchAll();
 
-/* ── Totalizadores por status ── */
 $totais = $pdo->query("
     SELECT status, COUNT(*) AS qtd FROM jogadores GROUP BY status
 ")->fetchAll(PDO::FETCH_KEY_PAIR);
@@ -76,9 +74,8 @@ $medias = $pdo->query("
 ")->fetch();
 ?>
 
-<h1>📊 Relatório Avançado de Jogadores</h1>
+<h1>Relatório Avançado de Jogadores</h1>
 
-<!-- Cards de resumo -->
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; margin-bottom:24px;">
     <?php
     $totalGeral = $pdo->query("SELECT COUNT(*) FROM jogadores")->fetchColumn();
@@ -102,7 +99,6 @@ $medias = $pdo->query("
     <?php endforeach; ?>
 </div>
 
-<!-- Filtros Aprimorados -->
 <div class="form-card" style="max-width: 100%; margin-bottom: 25px; padding: 20px;">
     <h3 style="margin-bottom: 15px; font-size: 1.1rem; color: #1a3a5c;">🔍 Filtros de Busca</h3>
     <form method="GET" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
@@ -170,7 +166,6 @@ $medias = $pdo->query("
     </div>
 </div>
 
-<!-- Tabela detalhada -->
 <?php if (!$jogadores): ?>
     <div class="alert alert-info">Nenhum resultado para os filtros aplicados.</div>
 <?php else: ?>
