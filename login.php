@@ -10,7 +10,7 @@ if (isset($_SESSION['usuario_id'])) {
 $erro = '';
 $sucesso = $_GET['msg'] ?? '';
 if ($sucesso === 'cadastrado') {
-    $sucesso = '✅ Conta criada com sucesso! Faça seu login.';
+    $sucesso = 'Conta criada com sucesso! Faça seu login.';
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Login - BID</title>
+    <title>Login - Boletim Informativo Diário</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
         .login-card { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
