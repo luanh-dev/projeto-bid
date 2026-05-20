@@ -17,7 +17,6 @@ if (!empty($_GET['msg'])) {
     }
 }
 
-/* ── Busca com filtro opcional ── */
 $busca = trim($_GET['busca'] ?? '');
 $where = '';
 $params = [];
