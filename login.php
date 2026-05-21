@@ -1,3 +1,5 @@
+<!-- teste final -->
+
 <?php
 session_start();
 require 'conecta.php';
