@@ -28,14 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $erro = 'Este e-mail já está cadastrado.';
             } else {
                 $stmt = $pdo->prepare("INSERT INTO USUARIOS (nome, email, senha, nivel) VALUES (?, ?, ?, 'usuario')");
+                $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
                 $stmt->execute([$nome, $email, $senha_hash]);
-                try {
-                    $stmt->execute([$nome, $email, $senha_hash]);
-                    header("Location: login.php?msg=cadastrado");
-                    exit;
-                } catch (PDOException $e) {
-                    $erro = 'Erro ao cadastrar: ' . $e->getMessage();
-                }
+                header("Location: login.php?msg=cadastrado");
+                exit;
             }
         }
     } else {
