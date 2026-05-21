@@ -1,29 +1,24 @@
-create database Projeto_bid;
-use Projeto_bid;
- 
+CREATE DATABASE IF NOT EXISTS Projeto_bid;
+USE Projeto_bid;
+
 CREATE TABLE IF NOT EXISTS USUARIOS ( 
     id_usuarios INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
+    nivel ENUM('admin', 'usuario') DEFAULT 'usuario',
     data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP, 
     ultima_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT IGNORE INTO USUARIOS (nome, email, senha) 
-    VALUES ('Administrador', 'root@admin.com', '12345'); 
-    
+INSERT IGNORE INTO USUARIOS (nome, email, senha, nivel) 
+VALUES ('Administrador', 'root@admin.com', '12345', 'admin');
+
 CREATE TABLE IF NOT EXISTS jogadores (
     id_jogadores INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(120) NOT NULL,
-    posicao ENUM(
-        'Goleiro', 'Lateral Direito', 'Lateral Esquerdo', 'Zagueiro', 
-        'Volante', 'Meia', 'Atacante', 'Ponta Direita', 
-        'Ponta Esquerda', 'Centroavante'
-    ) NOT NULL,
-    categoria ENUM(
-        'Profissional', 'Sub-23', 'Sub-20', 'Sub-17', 'Sub-15', 'Sub-13'
-    ) NOT NULL,
+    posicao ENUM('Goleiro', 'Lateral Direito', 'Lateral Esquerdo', 'Zagueiro', 'Volante', 'Meia', 'Atacante', 'Ponta Direita', 'Ponta Esquerda', 'Centroavante') NOT NULL,
+    categoria ENUM('Profissional', 'Sub-23', 'Sub-20', 'Sub-17', 'Sub-15', 'Sub-13') NOT NULL,
     idade INT NOT NULL,
     clube VARCHAR(120) NOT NULL,
     nacionalidade VARCHAR(80) NOT NULL,
@@ -38,36 +33,10 @@ CREATE TABLE IF NOT EXISTS jogadores (
     CONSTRAINT fk_jogador_usuario FOREIGN KEY (cadastrado_por) REFERENCES USUARIOS(id_usuarios) ON DELETE SET NULL
 );
 
-INSERT INTO jogadores (
-    nome, 
-    posicao, 
-    categoria, 
-    idade, 
-    clube, 
-    nacionalidade, 
-    pe_dominante, 
-    altura_cm, 
-    peso_kg, 
-    status, 
-    cadastrado_por,
-    obs
-) VALUES 
-(
-    'Carlos Eduardo Silva',
-    'Atacante',
-    'Profissional',
-    24,
-    'Esporte Clube Vitória',
-    'Brasileiro',
-    'Direito',
-    178,
-    74,
-    'Ativo',
-    1,
-    'Jogador veloz com bom drible.'
-);
+INSERT INTO jogadores (nome, posicao, categoria, idade, clube, nacionalidade, pe_dominante, altura_cm, peso_kg, status, cadastrado_por, obs) 
+VALUES ('Carlos Eduardo Silva', 'Atacante', 'Profissional', 24, 'Esporte Clube Vitória', 'Brasileiro', 'Direito', 178, 74, 'Ativo', 1, 'Jogador veloz com bom drible.');
 
 select * from USUARIOS;
 UPDATE USUARIOS SET nivel = 'admin' WHERE email = 'mateus123339@gmail.com';
-
 select * from jogadores;
+
